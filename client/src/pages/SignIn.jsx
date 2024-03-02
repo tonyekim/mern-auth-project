@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signInSuccess } from "../features/user/userSlice";
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [values, setValues] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(values);
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value });
@@ -25,11 +27,13 @@ const SignIn = () => {
         body: JSON.stringify(values),
       });
       const data = await response.json();
+
       setLoading(false);
       if (data.success === false) {
         setError(true);
         return;
       }
+      dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
       setLoading(false);
