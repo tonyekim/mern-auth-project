@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signInSuccess } from "../features/user/userSlice";
+import OAuth from "../components/OAuth";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -68,6 +69,8 @@ const SignIn = () => {
         >
           {loading ? "LOADIND.." : "Sign in"}
         </button>
+
+        <OAuth />
       </form>
 
       <div className="flex items-center gap-1 text-[15px] mt-5">
