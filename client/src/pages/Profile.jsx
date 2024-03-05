@@ -117,7 +117,7 @@ export default function Profile() {
           hidden
           accept='image/*'
           onChange={(e) => setImage(e.target.files[0])}
-        />
+        /> 
         <img
           src={formData.profilePicture || currentUser.profilePicture}
           alt='profile'
